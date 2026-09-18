@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>卷尺定制图案设计器 · 盘面印刷稿生成工具</title>
+<link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+
+<!-- ============ 顶栏 ============ -->
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-mark">⌾</span>
+    <div class="brand-text">
+      <strong>卷尺定制图案设计器</strong>
+      <span>盘面 58mm · 300 DPI · 导出即印刷</span>
+    </div>
+  </div>
+
+  <div class="topbar-actions">
+    <button class="btn btn-ghost" id="btnHelp" type="button">使用说明</button>
+    <button class="btn btn-ghost" id="btnFit" type="button" title="重置为满幅视图">重置视图</button>
+    <button class="btn btn-ghost" id="btnReset" type="button">清空重来</button>
+    <button class="btn btn-primary" id="btnExport" type="button">
+      <span class="ic">⬇</span> 导出高清图
+    </button>
+  </div>
+</header>
+
+<!-- ============ 主体：左侧面板 + 中间预览 + 右侧属性 ============ -->
+<main class="layout">
+
+  <!-- ---------- 左：素材库 ---------- -->
+  <aside class="panel panel-left">
+    <div class="panel-head">
+      <h2>1 · 素材</h2>
+      <p class="hint">选模板开局，再加水印图或上传照片</p>
+    </div>
+
+    <section class="block">
+      <h3 class="block-title">示例模板</h3>
+      <div class="tpl-grid" id="tplGrid"><!-- JS 注入 --></div>
+    </section>
+
+    <section class="block">
+      <h3 class="block-title">加水印图 / Logo</h3>
+      <div class="asset-row" id="assetRow"><!-- JS 注入 --></div>
+      <p class="tip">点击即添加到盘面中心，之后可拖动、缩放</p>
+    </section>
+
+    <section class="block">
+      <h3 class="block-title">上传本地照片</h3>
+      <label class="dropzone" id="dropzone">
+        <input type="file" id="fileInput" accept="image/*" hidden multiple />
+        <span class="dz-ic">🖼</span>
+        <span class="dz-main">点击选择，或把照片拖进来</span>
+        <span class="dz-sub">支持 JPG / PNG / WEBP，自动压缩存储</span>
+      </label>
+    </section>
+
+    <section class="block">
+      <h3 class="block-title">快速加文字</h3>
+      <div class="quick-add">
+        <button class="qa-btn" data-add="title" type="button">＋ 主标题</button>
+        <button class="qa-btn" data-add="sub" type="button">＋ 副标题</button>
+        <button class="qa-btn" data-add="phone" type="button">＋ 电话号码</button>
+        <button class="qa-btn" data-add="date" type="button">＋ 日期</button>
+        <button class="qa-btn" data-add="slogan" type="button">＋ 祝福语</button>
+        <button class="qa-btn" data-add="spec" type="button">＋ 规格标签</button>
+      </div>
+    </section>
+  </aside>
+
+  <!-- ---------- 中：预览 ---------- -->
+  <section class="stage">
+    <div class="stage-bar">
+      <div class="stage-left">
+        <span class="dot"></span>
+        <span id="stageInfo">盘面预览</span>
+      </div>
+      <div class="stage-right">
+        <label class="mini-check" title="显示盘面安全区与中心辅助线">
+          <input type="checkbox" id="chkGuides" /> 辅助线
+        </label>
+        <label class="mini-check" title="显示卷尺外壳 3D 效果，仅用于预览，不会导出">
+          <input type="checkbox" id="chkShell" checked /> 外壳效果
+        </label>
+        <div class="zoom">
+          <button class="zbtn" id="zOut" type="button">−</button>
+          <span id="zVal">100%</span>
+          <button class="zbtn" id="zIn" type="button">＋</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="canvas-wrap" id="canvasWrap">
+      <div class="canvas-holder" id="canvasHolder">
+        <!-- 3D 外壳层（仅预览） -->
+        <div class="shell" id="shell" aria-hidden="true">
+          <div class="shell-body"></div>
+          <div class="shell-mag"></div>
+          <div class="shell-tape"></div>
+        </div>
+        <!-- 可导出画布 -->
+        <div class="disc-wrap">
+          <canvas id="disc" width="1200" height="1200"></canvas>
+          <!-- 交互层：可拖动元素手柄 -->
+          <div class="hit-layer" id="hitLayer"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stage-foot">
+      <p class="gesture-tip">
+        <b>拖动</b>移动元素 · <b>双击</b>直接编辑文字 · <b>滚轮/双指</b>缩放所选 · <b>Delete</b> 删除
+      </p>
+      <div class="layerlist-wrap">
+        <span class="ll-label">图层（上层覆盖下层）</span>
+        <ul class="layerlist" id="layerList"><!-- JS 注入 --></ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------- 右：属性 ---------- -->
+  <aside class="panel panel-right">
+    <div class="panel-head">
+      <h2>2 · 编辑所选</h2>
+      <p class="hint" id="selHint">尚未选中元素，点击画布上的文字或图片</p>
+    </div>
+
+    <!-- 盘面设置 -->
+    <section class="block" id="discBlock">
+      <h3 class="block-title">盘面</h3>
+      <div class="field">
+        <label>底色</label>
+        <div class="color-line">
+          <input type="color" id="discColor" value="#3a3f45" />
+          <div class="swatches" id="discSwatches"></div>
+        </div>
+      </div>
+      <div class="field">
+        <label>质感</label>
+        <select id="discTexture">
+          <option value="matte">哑光（推荐印刷）</option>
+          <option value="flat">纯平色</option>
+          <option value="brushed">金属拉丝</option>
+        </select>
+      </div>
+    </section>
+
+    <!-- 文字属性 -->
+    <section class="block hidden" id="textBlock">
+      <h3 class="block-title">文字</h3>
+      <div class="field">
+        <label>内容</label>
+        <textarea id="txtContent" rows="2" placeholder="输入文字…"></textarea>
+      </div>
+      <div class="field">
+        <label>字体</label>
+        <select id="txtFont">
+          <optgroup label="黑体 / 无衬线">
+            <option value='"Microsoft YaHei","PingFang SC","Hiragino Sans GB","Noto Sans SC",sans-serif'>思源/微软雅黑</option>
+            <option value='"SimHei","Heiti SC",sans-serif'>黑体</option>
+            <option value='"Source Han Sans CN","Noto Sans SC",sans-serif'>思源黑体</option>
+            <option value='Impact,"Arial Black",sans-serif'>Impact（英文粗黑）</option>
+          </optgroup>
+          <optgroup label="宋体 / 衬线">
+            <option value='"SimSun","Songti SC",serif'>宋体</option>
+            <option value='"STSong","Songti SC",serif'>华文宋体</option>
+            <option value='Georgia,"Times New Roman",serif'>Georgia</option>
+          </optgroup>
+          <optgroup label="楷体 / 圆体">
+            <option value='"KaiTi","Kaiti SC",serif'>楷体</option>
+            <option value='"STKaiti","Kaiti SC",serif'>华文楷体</option>
+            <option value='"YouYuan","Yuanti SC",sans-serif'>幼圆</option>
+          </optgroup>
+          <optgroup label="手写 / 装饰">
+            <option value='"STXingkai","Xingkai SC",cursive'>行楷</option>
+            <option value='"STHupo","Hupo SC",sans-serif'>琥珀</option>
+            <option value='"STLiti","Liti SC",serif'>隶书</option>
+          </optgroup>
+        </select>
+      </div>
+      <div class="field-2col">
+        <div class="field">
+          <label>字号 <span class="val" id="vSize">32</span></label>
+          <input type="range" id="txtSize" min="8" max="240" value="32" />
+        </div>
+        <div class="field">
+          <label>字重</label>
+          <select id="txtWeight">
+            <option value="400">常规</option>
+            <option value="500">中等</option>
+            <option value="700" selected>加粗</option>
+            <option value="900">特粗</option>
+          </select>
+        </div>
+      </div>
+      <div class="field">
+        <label>字间距 <span class="val" id="vSpacing">0</span></label>
+        <input type="range" id="txtSpacing" min="-6" max="40" value="0" />
+      </div>
+      <div class="field">
+        <label>颜色</label>
+        <div class="color-line">
+          <input type="color" id="txtColor" value="#f2ede3" />
+          <div class="swatches" id="txtSwatches"></div>
+        </div>
+      </div>
+      <div class="field">
+        <label>效果</label>
+        <div class="chip-row" id="txtEffects">
+          <button class="chip is-on" data-fx="engrave" type="button">浮雕（雕刻感）</button>
+          <button class="chip" data-fx="glow" type="button">柔光</button>
+          <button class="chip" data-fx="outline" type="button">描边</button>
+          <button class="chip" data-fx="shadow" type="button">投影</button>
+        </div>
+      </div>
+      <div class="field">
+        <label>排列</label>
+        <div class="chip-row" id="txtAlign">
+          <button class="chip" data-align="left" type="button">左对齐</button>
+          <button class="chip is-on" data-align="center" type="button">居中</button>
+          <button class="chip" data-align="right" type="button">右对齐</button>
+        </div>
+      </div>
+      <div class="field">
+        <label>弧形排布 <span class="val" id="vArc">0°</span></label>
+        <input type="range" id="txtArc" min="0" max="260" value="0" />
+        <p class="tip">沿盘面顶部圆弧排布，数值越大弯得越明显；适合做环绕品牌字。0° 为水平直排</p>
+      </div>
+    </section>
+
+    <!-- 图片属性 -->
+    <section class="block hidden" id="imgBlock">
+      <h3 class="block-title">图片 / 照片</h3>
+      <div class="field">
+        <label>缩放 <span class="val" id="vImgScale">100%</span></label>
+        <input type="range" id="imgScale" min="20" max="400" value="100" />
+      </div>
+      <div class="field">
+        <label>旋转 <span class="val" id="vImgRot">0°</span></label>
+        <input type="range" id="imgRot" min="-180" max="180" value="0" />
+      </div>
+      <div class="field">
+        <label>裁剪形状</label>
+        <div class="chip-row" id="imgShape">
+          <button class="chip" data-shape="none" type="button">原始</button>
+          <button class="chip is-on" data-shape="circle" type="button">圆形</button>
+          <button class="chip" data-shape="squircle" type="button">圆角方</button>
+          <button class="chip" data-shape="rect" type="button">直角方</button>
+        </div>
+      </div>
+      <div class="field">
+        <label>盘面底色融合 <span class="val" id="vImgOpacity">100%</span></label>
+        <input type="range" id="imgOpacity" min="10" max="100" value="100" />
+      </div>
+      <div class="field">
+        <label>调色</label>
+        <div class="field-2col">
+          <div class="field">
+            <label class="mini">亮度 <span class="val" id="vImgBright">100%</span></label>
+            <input type="range" id="imgBright" min="40" max="180" value="100" />
+          </div>
+          <div class="field">
+            <label class="mini">对比 <span class="val" id="vImgContrast">100%</span></label>
+            <input type="range" id="imgContrast" min="40" max="200" value="100" />
+          </div>
+        </div>
+        <div class="field-2col">
+          <div class="field">
+            <label class="mini">饱和 <span class="val" id="vImgSat">100%</span></label>
+            <input type="range" id="imgSat" min="0" max="250" value="100" />
+          </div>
+          <div class="field">
+            <label class="mini">单色化 <span class="val" id="vImgMono">0%</span></label>
+            <input type="range" id="imgMono" min="0" max="100" value="0" />
+          </div>
+        </div>
+        <p class="tip">单色化配合浅色底可做出镭雕/丝印的单色效果</p>
+      </div>
+      <button class="btn btn-soft full" id="btnReplaceImg" type="button">替换这张图片</button>
+    </section>
+
+    <!-- 通用位置 -->
+    <section class="block hidden" id="posBlock">
+      <h3 class="block-title">位置与尺寸</h3>
+      <div class="field-2col">
+        <div class="field">
+          <label class="mini">X <span class="val" id="vPosX">0</span></label>
+          <input type="range" id="posX" min="-100" max="100" value="0" />
+        </div>
+        <div class="field">
+          <label class="mini">Y <span class="val" id="vPosY">0</span></label>
+          <input type="range" id="posY" min="-100" max="100" value="0" />
+        </div>
+      </div>
+      <div class="row-btns">
+        <button class="btn btn-soft" id="btnCenterH" type="button">水平居中</button>
+        <button class="btn btn-soft" id="btnCenterV" type="button">垂直居中</button>
+      </div>
+      <div class="row-btns">
+        <button class="btn btn-soft" id="btnUp" type="button">上移一层</button>
+        <button class="btn btn-soft" id="btnDown" type="button">下移一层</button>
+      </div>
+      <button class="btn btn-danger full" id="btnDel" type="button">删除所选元素</button>
+    </section>
+
+    <!-- 导出 -->
+    <section class="block">
+      <h3 class="block-title">3 · 导出</h3>
+      <div class="field">
+        <label>导出尺寸</label>
+        <select id="expSize">
+          <option value="1200">1200 × 1200（58mm @ 300DPI，推荐）</option>
+          <option value="2400">2400 × 2400（58mm @ 600DPI，高清）</option>
+          <option value="3600">3600 × 3600（超大，细节保留）</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>背景</label>
+        <div class="chip-row" id="expBg">
+          <button class="chip is-on" data-bg="disc" type="button">含盘面底色</button>
+          <button class="chip" data-bg="white" type="button">白底</button>
+          <button class="chip" data-bg="transparent" type="button">透明底</button>
+        </div>
+      </div>
+      <button class="btn btn-primary full" id="btnExport2" type="button">导出高清图片（PNG）</button>
+      <p class="tip">导出为方形画布，圆形盘面居中且已裁切；印刷时按盘面直径对应实际尺寸即可。</p>
+    </section>
+  </aside>
+</main>
+
+<!-- ============ 提示条 ============ -->
+<div class="toast" id="toast"></div>
+
+<!-- ============ 帮助弹层 ============ -->
+<div class="modal" id="helpModal" hidden>
+  <div class="modal-card">
+    <button class="modal-x" id="helpClose" type="button">✕</button>
+    <h2>怎么用</h2>
+    <ol class="help-list">
+      <li><b>选模板</b>：左栏「示例模板」里有 6 套现成版面，点一下就是全部可编辑的元素，直接改字最快。</li>
+      <li><b>加内容</b>：左边「快速加文字」添加姓名/电话/日期/祝福语；「上传本地照片」加头像或门店图。</li>
+      <li><b>调样式</b>：在画布上点中某个元素，右侧出现对应属性；文字可换字体、颜色、字号、字间距，还能开「浮雕」做出雕刻感，拉「弧形排布」可沿盘边环绕。</li>
+      <li><b>摆位置</b>：直接拖动画布上的元素；双击文字就地修改；滚轮或双指缩放所选；方向键微调。</li>
+      <li><b>看效果</b>：预览右侧「外壳效果」开关可看到装进卷尺的样子，导出时不含外壳。</li>
+      <li><b>导出</b>：右下选尺寸点导出，得到 PNG，交给印刷即可。</li>
+    </ol>
+    <div class="help-note">
+      <b>印刷提醒</b>：盘面直径按 58mm 计。文字与图案请留在圆形安全区内（可打开「辅助线」查看），靠边内容在裁切时可能被切掉。
+    </div>
+  </div>
+</div>
+
+<script src="./app.js"></script>
+</body>
+</html>
