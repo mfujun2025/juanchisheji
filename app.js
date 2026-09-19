@@ -405,11 +405,16 @@ function visualWidth(c, text, el) {
    所以顶部最高点 y = el.y - r - size/2，要求不越出盘面顶部（el.y 最小 0 处圆心靠上）。
    下限保证字不重叠，上限保证文字整体留在盘内。 */
 function arcRadius(el, textW, arcRad) {
-  const rNeed = textW / Math.max(0.05, Math.abs(arcRad));
-  const rMin = el.size * 0.95;                      // 再小就挤成一团
-  // 允许的半径上限：顶部不超出盘面（盘面顶边 y=0，留 1 个字高余量）
-  const rMax = Math.max(rMin, el.y + 500 - el.size * 1.2);
-  return clamp(rNeed, rMin, rMax);
+  const rNeed = textW / Math.max(0.05, Math.abs(arcRad));   // 按弧长反推所需半径
+  const rMin  = el.size * 0.95;                             // 再小单字就挤成一团
+  // 半径上限由「弧顶不越出盘面」定：弧心在 el.y，弧顶最高点 y = el.y - r - size/2。
+  const rMax  = Math.max(rMin, el.y + 500 - el.size * 1.2);
+  // 跨度太小时 rNeed 远大于 rMax，说明这段弧根本放不下这么多字
+  // （弧长短于文字总宽）。此时半径一律取 rMax：这是不出盘的最大半径，
+  // 文字会自动沿弧挤密排布，比推到盘外或缩成一坨都更合理。
+  // 注：此前把 rNeed 夹到 rMin 的写法会让 90°以上的弧整串字挤成一团，
+  // 是本次修掉的主要问题。
+  return clamp(Math.min(rNeed, rMax), rMin, rMax);
 }
 
 /* ---- 图片绘制 ---- */
@@ -1146,6 +1151,23 @@ $$('#imgShape .chip').forEach(c => c.addEventListener('click', () => {
   $$('#imgShape .chip').forEach(x => x.classList.toggle('is-on', x === c));
   markDirty(); render();
 }));
+
+/* 导出背景：此前这组 chip 没有绑定事件，导致「白底 / 透明底」点了没反应。 */
+$$('#expBg .chip').forEach(c => c.addEventListener('click', () => {
+  const bg = c.dataset.bg;
+  if (!bg) return;
+  state.exportBg = bg;
+  $$('#expBg .chip').forEach(x => x.classList.toggle('is-on', x === c));
+  markDirty();
+  toast(bg === 'disc' ? '导出背景：含盘面底色'
+      : bg === 'white' ? '导出背景：白底'
+      : '导出背景：透明底（切图用）');
+}));
+/* 导出尺寸下拉：同步进 state，避免只看 DOM 值 */
+$('#expSize').addEventListener('change', () => {
+  state.exportSize = Number($('#expSize').value) || 1200;
+  markDirty();
+});
 $('#btnReplaceImg').addEventListener('click', () => { replacingId = state.selectedId; fileInput.click(); });
 let replacingId = null;
 fileInput.addEventListener('change', () => {

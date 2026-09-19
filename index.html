@@ -1,355 +1,368 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<html lang="zh-CN" data-page-node-id="E0PgHVJBLypybDOlfNSpvl">
+<head data-page-node-id="z2O4Xhfn9TaDHG0xFFTGXM">
+<meta charset="UTF-8" data-page-node-id="lGtIz6b7IQoB5fsMsvIHry" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" data-page-node-id="4KkQrVbKzbSuzOckRuXvqR" />
 <title>卷尺定制图案设计器 · 盘面印刷稿生成工具</title>
-<link rel="stylesheet" href="./styles.css" />
+<link rel="stylesheet" href="./styles.css" data-page-node-id="1uCnbw6oPa0HVytg4AKG0m" />
 </head>
-<body>
+<body data-page-node-id="wnPQgcTGlXlHZJueDtuMey">
 
 <!-- ============ 顶栏 ============ -->
-<header class="topbar">
-  <div class="brand">
-    <span class="brand-mark">⌾</span>
-    <div class="brand-text">
-      <strong>卷尺定制图案设计器</strong>
-      <span>盘面 58mm · 300 DPI · 导出即印刷</span>
+<header class="topbar" data-page-node-id="2fOiKmm3NUdyYiFuKBROg0">
+  <div class="brand" data-page-node-id="2O7J1k3k5qRk0GRIS54FWG">
+    <span class="brand-mark" data-page-node-id="2lRpdN6uYOvyu9xqbU886u">⌖</span>
+    <div class="brand-text" data-page-node-id="EVv2q6dQuC6Oic3OdfyNNh">
+      <strong data-page-node-id="QB5SFFhbTkZPE1PHLAGZ9j">卷尺盘面印刷稿生成器</strong>
+      <span data-page-node-id="pnKTD628QFnEYXTDVWNG0x">LASER MARKING · φ58mm · 300 DPI · SN 0001</span>
     </div>
   </div>
 
-  <div class="topbar-actions">
-    <button class="btn btn-ghost" id="btnHelp" type="button">使用说明</button>
-    <button class="btn btn-ghost" id="btnFit" type="button" title="重置为满幅视图">重置视图</button>
-    <button class="btn btn-ghost" id="btnReset" type="button">清空重来</button>
-    <button class="btn btn-primary" id="btnExport" type="button">
-      <span class="ic">⬇</span> 导出高清图
+  <div class="topbar-actions" data-page-node-id="e3yhErIk0Mi5rwckcZRSF0">
+    <button class="btn btn-ghost" id="btnHelp" type="button" data-page-node-id="2Sq5QHlDQvHIF1xitSB58O">使用说明</button>
+    <button class="btn btn-ghost" id="btnFit" type="button" title="重置为满幅视图" data-page-node-id="5XVJzPF7oE6l8TD0n3P4Zv">重置视图</button>
+    <button class="btn btn-ghost" id="btnReset" type="button" data-page-node-id="69YkPlRc5gvB4cEA822ZmC">清空重来</button>
+    <button class="btn btn-primary" id="btnExport" type="button" data-page-node-id="5A4UlzF5nSz1oDm9VGGox1">
+      <span class="ic" data-page-node-id="IpFQyuGCfCNiFuE8ADcoJf">⬇</span> 导出高清图
     </button>
   </div>
 </header>
 
 <!-- ============ 主体：左侧面板 + 中间预览 + 右侧属性 ============ -->
-<main class="layout">
+<main class="layout" data-page-node-id="y9BO5DWttaqkZ3Qf6F5Gw7">
 
   <!-- ---------- 左：素材库 ---------- -->
-  <aside class="panel panel-left">
-    <div class="panel-head">
-      <h2>1 · 素材</h2>
-      <p class="hint">选模板开局，再加水印图或上传照片</p>
+  <aside class="panel panel-left" data-page-node-id="Fo0eTO5m3Ylji4aFonluMG">
+    <div class="panel-head" data-page-node-id="X1X2pLEBCv3gnBKkIVkiFa">
+      <h2 data-page-node-id="duBDrqmjeBqe10FEKlUTBR">1 · 素材</h2>
+      <p class="hint" data-page-node-id="vyhBNs2UivDuwchUO7qOcO">选模板开局，再加水印图或上传照片</p>
     </div>
 
-    <section class="block">
-      <h3 class="block-title">示例模板</h3>
-      <div class="tpl-grid" id="tplGrid"><!-- JS 注入 --></div>
+    <section class="block" data-page-node-id="kL241pnW9oFSARKh0DWLDt">
+      <h3 class="block-title" data-page-node-id="p8iMSFLjJbTCxVKHfDAsux">示例模板</h3>
+      <div class="tpl-grid" id="tplGrid" data-page-node-id="4nMFPNaoWTaLU0gTA76UbY"><!-- JS 注入 --></div>
     </section>
 
-    <section class="block">
-      <h3 class="block-title">加水印图 / Logo</h3>
-      <div class="asset-row" id="assetRow"><!-- JS 注入 --></div>
-      <p class="tip">点击即添加到盘面中心，之后可拖动、缩放</p>
+    <section class="block" data-page-node-id="ZfW8T8mILG8upbisAbIpCO">
+      <h3 class="block-title" data-page-node-id="5iG0dhl0oPqv4c1Uz0urqF">加水印图 / Logo</h3>
+      <div class="asset-row" id="assetRow" data-page-node-id="G8CXEDDARCq6hdrtXuCTnO"><!-- JS 注入 --></div>
+      <p class="tip" data-page-node-id="DZQFCkYLuL3fZRrGBiC229">点击即添加到盘面中心，之后可拖动、缩放</p>
     </section>
 
-    <section class="block">
-      <h3 class="block-title">上传本地照片</h3>
-      <label class="dropzone" id="dropzone">
-        <input type="file" id="fileInput" accept="image/*" hidden multiple />
-        <span class="dz-ic">🖼</span>
-        <span class="dz-main">点击选择，或把照片拖进来</span>
-        <span class="dz-sub">支持 JPG / PNG / WEBP，自动压缩存储</span>
+    <section class="block" data-page-node-id="taAaFOdf4R00E8nKHLhFRL">
+      <h3 class="block-title" data-page-node-id="CQzv99HLH9BtNEjBKkNDMP">上传本地照片</h3>
+      <label class="dropzone" id="dropzone" data-page-node-id="1G5Mf9ZbGWHKEBkRQXa9g1">
+        <input type="file" id="fileInput" accept="image/*" hidden multiple data-page-node-id="eTKwM7uWGuNjcpO0j6Eblg" />
+        <span class="dz-ic" data-page-node-id="uzESECJWI9Gta2V6LquK45">[ + ]</span>
+        <span class="dz-main" data-page-node-id="LKeJaMu09zSkGdyt3z7O3I">点击选择，或把照片拖进来</span>
+        <span class="dz-sub" data-page-node-id="VdRdVKb8oalYK5wawBbT7W">支持 JPG / PNG / WEBP，自动压缩存储</span>
       </label>
     </section>
 
-    <section class="block">
-      <h3 class="block-title">快速加文字</h3>
-      <div class="quick-add">
-        <button class="qa-btn" data-add="title" type="button">＋ 主标题</button>
-        <button class="qa-btn" data-add="sub" type="button">＋ 副标题</button>
-        <button class="qa-btn" data-add="phone" type="button">＋ 电话号码</button>
-        <button class="qa-btn" data-add="date" type="button">＋ 日期</button>
-        <button class="qa-btn" data-add="slogan" type="button">＋ 祝福语</button>
-        <button class="qa-btn" data-add="spec" type="button">＋ 规格标签</button>
+    <section class="block" data-page-node-id="kKzpyFEiHlnQXDaiBEkxlV">
+      <h3 class="block-title" data-page-node-id="vUv4nsa0taNdsJFdEOQebB">快速加文字</h3>
+      <div class="quick-add" data-page-node-id="925t7TYXYko6sZkqQFJbBB">
+        <button class="qa-btn" data-add="title" type="button" data-page-node-id="CklyKhF1oDdfaA6BRjgHa3">＋ 主标题</button>
+        <button class="qa-btn" data-add="sub" type="button" data-page-node-id="XqyZS2hTlBPO7FYe6fZV4i">＋ 副标题</button>
+        <button class="qa-btn" data-add="phone" type="button" data-page-node-id="qTaSTWEJ13AyDiR6hf5nNu">＋ 电话号码</button>
+        <button class="qa-btn" data-add="date" type="button" data-page-node-id="JCCUR4vGTWRJ9TUCAJii1n">＋ 日期</button>
+        <button class="qa-btn" data-add="slogan" type="button" data-page-node-id="act8SjGZS2deQvYP2a1e9Q">＋ 祝福语</button>
+        <button class="qa-btn" data-add="spec" type="button" data-page-node-id="2IC5eDMwt4hULWZIaXxmTF">＋ 规格标签</button>
       </div>
     </section>
   </aside>
 
   <!-- ---------- 中：预览 ---------- -->
-  <section class="stage">
-    <div class="stage-bar">
-      <div class="stage-left">
-        <span class="dot"></span>
-        <span id="stageInfo">盘面预览</span>
-      </div>
-      <div class="stage-right">
-        <label class="mini-check" title="显示盘面安全区与中心辅助线">
-          <input type="checkbox" id="chkGuides" /> 辅助线
+  <section class="stage" data-page-node-id="nyls2jwFCOGv2n8QJe5cIj">
+    <div class="stage-bar" data-page-node-id="ocfBXWoJfGcbDFNDAAQjY8">
+      <div class="stage-left" data-page-node-id="mAE2QSIBXWXB4FrfuA13Yc">
+        <span class="dot" data-page-node-id="9xXVH4vPeSprHX507lHaOj"></span>
+        <span id="stageInfo" data-page-node-id="l39X3XtwCCZ2IX3CpV4YvC">盘面预览</span>
+      </div>      <div class="stage-right" data-page-node-id="9pBaYwZ7fR1rXtJi6PhZzY">
+        <label class="mini-check" title="显示盘面安全区与中心辅助线" data-page-node-id="roJEVUeoSfvY3K2kW2LicI">
+          <input type="checkbox" id="chkGuides" data-page-node-id="dOWFDtTsNuKbILb1b0Kc8i" /> 辅助线
         </label>
-        <label class="mini-check" title="显示卷尺外壳 3D 效果，仅用于预览，不会导出">
-          <input type="checkbox" id="chkShell" checked /> 外壳效果
+        <label class="mini-check" title="显示卷尺外壳 3D 效果，仅用于预览，不会导出" data-page-node-id="mjJOH9BWxgYqKMNqXgdLHC">
+          <input type="checkbox" id="chkShell" checked data-page-node-id="Y5VlxHrhR3xaDJT7r8HVOL" /> 外壳效果
         </label>
-        <div class="zoom">
-          <button class="zbtn" id="zOut" type="button">−</button>
-          <span id="zVal">100%</span>
-          <button class="zbtn" id="zIn" type="button">＋</button>
+        <div class="zoom" data-page-node-id="zg05JFHhLPiuJw9XDou0Q2">
+          <button class="zbtn" id="zOut" type="button" data-page-node-id="jIIYvKjFAa3AfgAWxrUjBY">−</button>
+          <span id="zVal" data-page-node-id="46dkeY5pSzMCSW6SQYBJ4p">100%</span>
+          <button class="zbtn" id="zIn" type="button" data-page-node-id="sUvYIyk9F2ItDAdcmDXoKH">＋</button>
         </div>
       </div>
     </div>
 
-    <div class="canvas-wrap" id="canvasWrap">
-      <div class="canvas-holder" id="canvasHolder">
+    <div class="canvas-wrap" id="canvasWrap" data-page-node-id="IjKdhPtehswfuysENOv4yn">
+      <div class="canvas-holder" id="canvasHolder" data-page-node-id="sgX7ie7EqTkF7OFUfoQmwi">
         <!-- 3D 外壳层（仅预览） -->
-        <div class="shell" id="shell" aria-hidden="true">
-          <div class="shell-body"></div>
-          <div class="shell-mag"></div>
-          <div class="shell-tape"></div>
+        <div class="shell" id="shell" aria-hidden="true" data-page-node-id="OonhOWEXqYJet1OInh2RuY">
+          <div class="shell-body" data-page-node-id="HA3VdDW0sQKrfTRo4ZztDw"></div>
+          <div class="shell-mag" data-page-node-id="UfrBTxPcpjFDYdKhZhmLec"></div>
+          <div class="shell-tape" data-page-node-id="xLdHAkUHGiF2YW6Jv1JtuF"></div>
         </div>
         <!-- 可导出画布 -->
-        <div class="disc-wrap">
-          <canvas id="disc" width="1200" height="1200"></canvas>
+        <div class="disc-wrap" data-page-node-id="AzqmJK3m6OA8hQr8sWkDo0">
+          <canvas id="disc" width="1200" height="1200" data-page-node-id="UxIyWdFHr7dKIBmAD2Xjro"></canvas>
           <!-- 交互层：可拖动元素手柄 -->
-          <div class="hit-layer" id="hitLayer"></div>
+          <div class="hit-layer" id="hitLayer" data-page-node-id="KBO54Ta0Bi1M5CPLHiKBhp"></div>
         </div>
       </div>
     </div>
 
-    <div class="stage-foot">
-      <p class="gesture-tip">
-        <b>拖动</b>移动元素 · <b>双击</b>直接编辑文字 · <b>滚轮/双指</b>缩放所选 · <b>Delete</b> 删除
+    <div class="stage-foot" data-page-node-id="490qt56TJoEnSGTr5wNFGM">
+      <p class="gesture-tip" data-page-node-id="jlhs6gEAAgNS5TlXipfvVO">
+        <b data-page-node-id="ImMajWp6KC8D5XT0HUvnjX">拖动</b>移动元素 · <b data-page-node-id="SlsCk2nKIByqYO0UZps1XM">双击</b>直接编辑文字 · <b data-page-node-id="S12HsohJS1n5Ku36CZUJeU">滚轮/双指</b>缩放所选 · <b data-page-node-id="PIKtuPImxl2WwZRfPl6MNI">Delete</b> 删除
       </p>
-      <div class="layerlist-wrap">
-        <span class="ll-label">图层（上层覆盖下层）</span>
-        <ul class="layerlist" id="layerList"><!-- JS 注入 --></ul>
+      <div class="layerlist-wrap" data-page-node-id="sFDMj6p4Fq8tpDe2B5TTXK">
+        <span class="ll-label" data-page-node-id="F8oDYDWjLlbH4zjtfHY0ZW">图层 · 上层覆盖下层</span>
+        <ul class="layerlist" id="layerList" data-page-node-id="4IZbCLR5hNXBrqTxOxBxlM"><!-- JS 注入 --></ul>
       </div>
     </div>
   </section>
 
   <!-- ---------- 右：属性 ---------- -->
-  <aside class="panel panel-right">
-    <div class="panel-head">
-      <h2>2 · 编辑所选</h2>
-      <p class="hint" id="selHint">尚未选中元素，点击画布上的文字或图片</p>
+  <aside class="panel panel-right" data-page-node-id="MQoqGRr8DADtoGJFut1OI7">
+    <div class="panel-head" data-page-node-id="0N1PVZYup71m17ENolitTO">
+      <h2 data-page-node-id="SKs4iOFafjLzdCAbGxmCFE">2 · 编辑所选</h2>
+      <p class="hint" id="selHint" data-page-node-id="82UP7VjMfz78Mjupe2AP1c">尚未选中元素，点击画布上的文字或图片</p>
     </div>
 
     <!-- 盘面设置 -->
-    <section class="block" id="discBlock">
-      <h3 class="block-title">盘面</h3>
-      <div class="field">
-        <label>底色</label>
-        <div class="color-line">
-          <input type="color" id="discColor" value="#3a3f45" />
-          <div class="swatches" id="discSwatches"></div>
+    <section class="block" id="discBlock" data-page-node-id="VzSDSRdKmA2CLV6FXZbEpv">
+      <h3 class="block-title" data-page-node-id="B7VbqgFavXGHm3TDMdPkZo">盘面</h3>
+      <div class="field" data-page-node-id="A6z2F2le0hCtM7inCuzzj0">
+        <label data-page-node-id="X0ZwqQwZVL9vjsmjahMPVM">底色</label>
+        <div class="color-line" data-page-node-id="OxFjxodJ03YCwlWvoies4z">
+          <input type="color" id="discColor" value="#3a3f45" data-page-node-id="P3exTkNizeVXrmHf9WVL1w" />
+          <div class="swatches" id="discSwatches" data-page-node-id="Ca4aFOi2V1o22WjiyCPiUw"></div>
         </div>
       </div>
-      <div class="field">
-        <label>质感</label>
-        <select id="discTexture">
-          <option value="matte">哑光（推荐印刷）</option>
-          <option value="flat">纯平色</option>
-          <option value="brushed">金属拉丝</option>
+      <div class="field" data-page-node-id="SbCgmprompVyXJbihgvrHt">
+        <label data-page-node-id="mONJEQ42woqyIKy1GNxlAM">质感</label>
+        <select id="discTexture" data-page-node-id="M0JA61yeDQymdhpGNWO2Pg">
+          <option value="matte" data-page-node-id="OFPTcCLlQs8ggEBGQYC4bT">哑光（推荐印刷）</option>
+          <option value="flat" data-page-node-id="yFvtqvHgtwNa1fUnoNyPQx">纯平色</option>
+          <option value="brushed" data-page-node-id="utHtOuQDAY6KqGfliDHyWY">金属拉丝</option>
         </select>
       </div>
     </section>
 
     <!-- 文字属性 -->
-    <section class="block hidden" id="textBlock">
-      <h3 class="block-title">文字</h3>
-      <div class="field">
-        <label>内容</label>
+    <section class="block hidden" id="textBlock" data-page-node-id="hv8gBLv6n7KbKVRt7gm4xi">
+      <h3 class="block-title" data-page-node-id="QAituBa9ujjUvcN19tL4Fu">文字</h3>
+      <div class="field" data-page-node-id="qAH41jp2zhrKVCkenfIz2P">
+        <label data-page-node-id="i5No488VJkjQIbyA7V2s5q">内容</label>
         <textarea id="txtContent" rows="2" placeholder="输入文字…"></textarea>
       </div>
-      <div class="field">
-        <label>字体</label>
-        <select id="txtFont">
-          <optgroup label="黑体 / 无衬线">
-            <option value='"Microsoft YaHei","PingFang SC","Hiragino Sans GB","Noto Sans SC",sans-serif'>思源/微软雅黑</option>
-            <option value='"SimHei","Heiti SC",sans-serif'>黑体</option>
-            <option value='"Source Han Sans CN","Noto Sans SC",sans-serif'>思源黑体</option>
-            <option value='Impact,"Arial Black",sans-serif'>Impact（英文粗黑）</option>
+      <div class="field" data-page-node-id="BWKzDBqOCmRGxT8mwFF6tD">
+        <label data-page-node-id="C6c3fStCi8cyWh8HZrkHCq">字体</label>
+        <select id="txtFont" data-page-node-id="z5zpOHVrsTfAvJH2lKKOnX">
+          <optgroup label="黑体 / 无衬线" data-page-node-id="Ya78BLy6hxMLplmvdwWjvJ">
+            <option value='"Microsoft YaHei","PingFang SC","Hiragino Sans GB","Noto Sans SC",sans-serif' data-page-node-id="jsqB8oZUCjKGfRjaOu9HB9">思源/微软雅黑</option>
+            <option value='"SimHei","Heiti SC",sans-serif' data-page-node-id="YUvnGRLCimGBDNkdACBdzQ">黑体</option>
+            <option value='"Source Han Sans CN","Noto Sans SC",sans-serif' data-page-node-id="xmQSUS7r3Jx4oiGJqYzuYC">思源黑体</option>
+            <option value='Impact,"Arial Black",sans-serif' data-page-node-id="9WeBrwY0PwWFjY9d51tqCV">Impact（英文粗黑）</option>
           </optgroup>
-          <optgroup label="宋体 / 衬线">
-            <option value='"SimSun","Songti SC",serif'>宋体</option>
-            <option value='"STSong","Songti SC",serif'>华文宋体</option>
-            <option value='Georgia,"Times New Roman",serif'>Georgia</option>
+          <optgroup label="宋体 / 衬线" data-page-node-id="eQnDq437SXTNDvghzTCXFH">
+            <option value='"SimSun","Songti SC",serif' data-page-node-id="2EDx6SqaXpux2o5fzUhxD0">宋体</option>
+            <option value='"STSong","Songti SC",serif' data-page-node-id="n0Z3ps9RRn8xQFWGSKCCIt">华文宋体</option>
+            <option value='Georgia,"Times New Roman",serif' data-page-node-id="xF6FYfSWAE2hyfLY0iyKLx">Georgia</option>
           </optgroup>
-          <optgroup label="楷体 / 圆体">
-            <option value='"KaiTi","Kaiti SC",serif'>楷体</option>
-            <option value='"STKaiti","Kaiti SC",serif'>华文楷体</option>
-            <option value='"YouYuan","Yuanti SC",sans-serif'>幼圆</option>
+          <optgroup label="楷体 / 圆体" data-page-node-id="sA3WrPy5WYFV6jyNlXnHul">
+            <option value='"KaiTi","Kaiti SC",serif' data-page-node-id="nq9TKfbqSyDVkIXIntVZxF">楷体</option>
+            <option value='"STKaiti","Kaiti SC",serif' data-page-node-id="jCHFU9rTlk9Alo8uhKvo5p">华文楷体</option>
+            <option value='"YouYuan","Yuanti SC",sans-serif' data-page-node-id="OT2rUg79iAXXdkp9FaO90F">幼圆</option>
           </optgroup>
-          <optgroup label="手写 / 装饰">
-            <option value='"STXingkai","Xingkai SC",cursive'>行楷</option>
-            <option value='"STHupo","Hupo SC",sans-serif'>琥珀</option>
-            <option value='"STLiti","Liti SC",serif'>隶书</option>
+          <optgroup label="手写 / 装饰" data-page-node-id="E0DCD81Drn5lH7YPFEoBX8">
+            <option value='"STXingkai","Xingkai SC",cursive' data-page-node-id="Mlnm57WF7TV8FWW6DSzHQM">行楷</option>
+            <option value='"STHupo","Hupo SC",sans-serif' data-page-node-id="V1m41gEwvzGYNnq6JH62Jd">琥珀</option>
+            <option value='"STLiti","Liti SC",serif' data-page-node-id="an5LH9xZQE2NELhDyNsp57">隶书</option>
           </optgroup>
         </select>
       </div>
-      <div class="field-2col">
-        <div class="field">
-          <label>字号 <span class="val" id="vSize">32</span></label>
-          <input type="range" id="txtSize" min="8" max="240" value="32" />
+      <div class="field-2col" data-page-node-id="R4TXSd1G8RnTxbdGzLveYu">
+        <div class="field" data-page-node-id="FKErFvvA8nu1yfI1W6idCb">
+          <label data-page-node-id="F2wiSuzyolQykknMK4anhd">字号 <span class="val" id="vSize" data-page-node-id="PYZ5bo3VwQqFMpA89bHgWM">32</span></label>
+          <input type="range" id="txtSize" min="8" max="240" value="32" data-page-node-id="plzV3euzPkvaraDjoi5QIO" />
         </div>
-        <div class="field">
-          <label>字重</label>
-          <select id="txtWeight">
-            <option value="400">常规</option>
-            <option value="500">中等</option>
-            <option value="700" selected>加粗</option>
-            <option value="900">特粗</option>
+        <div class="field" data-page-node-id="7xqteFN3bKqZmjOGdX0yHX">
+          <label data-page-node-id="jSjYXofSHM5iBojJRkTeU5">字重</label>
+          <select id="txtWeight" data-page-node-id="DgcHZZWBjc8lPDPxsYsqok">
+            <option value="400" data-page-node-id="zhFUv5CsJUSsLcGA7ESDMi">常规</option>
+            <option value="500" data-page-node-id="h8wewn2LczY1X4pNzRg7PT">中等</option>
+            <option value="700" selected data-page-node-id="z2C5eWRwK2iKn8Q6Y4SW9N">加粗</option>
+            <option value="900" data-page-node-id="WKFaJswJDmVErGQWCdk2xE">特粗</option>
           </select>
         </div>
       </div>
-      <div class="field">
-        <label>字间距 <span class="val" id="vSpacing">0</span></label>
-        <input type="range" id="txtSpacing" min="-6" max="40" value="0" />
+      <div class="field" data-page-node-id="ClzOSH5etEzrqQkcW2JIn5">
+        <label data-page-node-id="eS1vtVaM2w4BmO1J3FRU4S">字间距 <span class="val" id="vSpacing" data-page-node-id="fEGGrZx3El1L5Kv5XBp2vc">0</span></label>
+        <input type="range" id="txtSpacing" min="-6" max="40" value="0" data-page-node-id="TVlkcOk0p8cVW459B3KOvH" />
       </div>
-      <div class="field">
-        <label>颜色</label>
-        <div class="color-line">
-          <input type="color" id="txtColor" value="#f2ede3" />
-          <div class="swatches" id="txtSwatches"></div>
+      <div class="field" data-page-node-id="MNoohslV5EG8RHvyIqeTig">
+        <label data-page-node-id="DjBFe3fwgmCAxISPRdBqQj">颜色</label>
+        <div class="color-line" data-page-node-id="BDg9QmwFWimq8lUbIB92nA">
+          <input type="color" id="txtColor" value="#f2ede3" data-page-node-id="viDELVB7ADJLDDJIP1TPLR" />
+          <div class="swatches" id="txtSwatches" data-page-node-id="BT8Qq0UZS4kSWZZPUWBv7P"></div>
         </div>
       </div>
-      <div class="field">
-        <label>效果</label>
-        <div class="chip-row" id="txtEffects">
-          <button class="chip is-on" data-fx="engrave" type="button">浮雕（雕刻感）</button>
-          <button class="chip" data-fx="glow" type="button">柔光</button>
-          <button class="chip" data-fx="outline" type="button">描边</button>
-          <button class="chip" data-fx="shadow" type="button">投影</button>
+      <div class="field" data-page-node-id="I5bQaluj3FlyAvVqD1U1aL">
+        <label data-page-node-id="RELBPgVbCnJN6lxRcBH51l">效果</label>
+        <div class="chip-row" id="txtEffects" data-page-node-id="CoX0cKpYtWg4EGAOUuYogc">
+          <button class="chip is-on" data-fx="engrave" type="button" data-page-node-id="ZtFCWSEUzrg6HMhGwFxJxH">浮雕（雕刻感）</button>
+          <button class="chip" data-fx="glow" type="button" data-page-node-id="s0xUjbzZGLCFFuOJ9e2AAi">柔光</button>
+          <button class="chip" data-fx="outline" type="button" data-page-node-id="gv0p0WbtJKOwxPYIE67M3e">描边</button>
+          <button class="chip" data-fx="shadow" type="button" data-page-node-id="DZjMoUYoQeTOB9WNkLL8vH">投影</button>
         </div>
       </div>
-      <div class="field">
-        <label>排列</label>
-        <div class="chip-row" id="txtAlign">
-          <button class="chip" data-align="left" type="button">左对齐</button>
-          <button class="chip is-on" data-align="center" type="button">居中</button>
-          <button class="chip" data-align="right" type="button">右对齐</button>
+      <div class="field" data-page-node-id="eytNvZivBTmjRChHofgqJC">
+        <label data-page-node-id="30vyDk4Lx4BvBQY0qGx7x8">排列</label>
+        <div class="chip-row" id="txtAlign" data-page-node-id="xiGB9IE9FeSzFESPLuZlWF">
+          <button class="chip" data-align="left" type="button" data-page-node-id="ZieQeZxGWcVlpV24FuLOGT">左对齐</button>
+          <button class="chip is-on" data-align="center" type="button" data-page-node-id="EpIHpI39OYhBeyDoDqgRyD">居中</button>
+          <button class="chip" data-align="right" type="button" data-page-node-id="EIFBFFBNQChMoutbXtsYYl">右对齐</button>
         </div>
       </div>
-      <div class="field">
-        <label>弧形排布 <span class="val" id="vArc">0°</span></label>
-        <input type="range" id="txtArc" min="0" max="260" value="0" />
-        <p class="tip">沿盘面顶部圆弧排布，数值越大弯得越明显；适合做环绕品牌字。0° 为水平直排</p>
+      <div class="field" data-page-node-id="lZ11PKN4Hh6HPBhnQPXFZ6">
+        <label data-page-node-id="LB0sVvH1EP6v8C86gVbV9M">弧形排布 <span class="val" id="vArc" data-page-node-id="XIsiCYpoMj18971mP0tR9S">0°</span></label>
+        <input type="range" id="txtArc" min="0" max="260" value="0" data-page-node-id="dsLGkW8lwcjj9ZscANqrzk" />
+        <p class="tip" data-page-node-id="Z5tqQzcyYIBd2CiZYPUJ3Z">沿盘面顶部圆弧排布，数值越大弯得越明显；适合做环绕品牌字。0° 为水平直排</p>
       </div>
     </section>
 
     <!-- 图片属性 -->
-    <section class="block hidden" id="imgBlock">
-      <h3 class="block-title">图片 / 照片</h3>
-      <div class="field">
-        <label>缩放 <span class="val" id="vImgScale">100%</span></label>
-        <input type="range" id="imgScale" min="20" max="400" value="100" />
+    <section class="block hidden" id="imgBlock" data-page-node-id="TjWHF2kX9AiMNdbwZ3iVGN">
+      <h3 class="block-title" data-page-node-id="r3ogq63AEXJTskTIpVQ4ZG">图片 / 照片</h3>
+      <div class="field" data-page-node-id="YEIjW15tuU9oAea2TDePNt">
+        <label data-page-node-id="w6KCWQqcI7CvyyvFRFshAi">缩放 <span class="val" id="vImgScale" data-page-node-id="gRp5OPj0myQmjErKHK3KuF">100%</span></label>
+        <input type="range" id="imgScale" min="20" max="400" value="100" data-page-node-id="zFkOkYF9jWxYfk3bFu0AAE" />
       </div>
-      <div class="field">
-        <label>旋转 <span class="val" id="vImgRot">0°</span></label>
-        <input type="range" id="imgRot" min="-180" max="180" value="0" />
+      <div class="field" data-page-node-id="WQFHBdhYLuCforoMiuEcXY">
+        <label data-page-node-id="MG3bMdFJYzIEmCC2abx6hB">旋转 <span class="val" id="vImgRot" data-page-node-id="8sk4sZAFmQQNaGVknYKg2Q">0°</span></label>
+        <input type="range" id="imgRot" min="-180" max="180" value="0" data-page-node-id="XpiezMFaOPNIPKcdHAl0LP" />
       </div>
-      <div class="field">
-        <label>裁剪形状</label>
-        <div class="chip-row" id="imgShape">
-          <button class="chip" data-shape="none" type="button">原始</button>
-          <button class="chip is-on" data-shape="circle" type="button">圆形</button>
-          <button class="chip" data-shape="squircle" type="button">圆角方</button>
-          <button class="chip" data-shape="rect" type="button">直角方</button>
+      <div class="field" data-page-node-id="skUvLT5yTNHMFcvV0QdnO1">
+        <label data-page-node-id="gTzh9J1PeHGwLAi5hLBXsP">裁剪形状</label>
+        <div class="chip-row" id="imgShape" data-page-node-id="FTL7lZHXyIYM2rwHlBidLd">
+          <button class="chip" data-shape="none" type="button" data-page-node-id="AZrTLLfgme0ttp8BwFzMIT">原始</button>
+          <button class="chip is-on" data-shape="circle" type="button" data-page-node-id="tYFE9EyMngiROImv7f5Mu9">圆形</button>
+          <button class="chip" data-shape="squircle" type="button" data-page-node-id="Z4NTWzAU7jfmxDJsrjndnU">圆角方</button>
+          <button class="chip" data-shape="rect" type="button" data-page-node-id="kAXXdmlg51JKOTfcdklrbJ">直角方</button>
         </div>
       </div>
-      <div class="field">
-        <label>盘面底色融合 <span class="val" id="vImgOpacity">100%</span></label>
-        <input type="range" id="imgOpacity" min="10" max="100" value="100" />
+      <div class="field" data-page-node-id="KXdXBr6nPH6CyowHHC4IBV">
+        <label data-page-node-id="6CoQvOvaUyKmHj9q2BhjHJ">盘面底色融合 <span class="val" id="vImgOpacity" data-page-node-id="9NlA57Nuc9gYgTs5N4BaDm">100%</span></label>
+        <input type="range" id="imgOpacity" min="10" max="100" value="100" data-page-node-id="BiXSt2erUjYb3nmnGwlJty" />
       </div>
-      <div class="field">
-        <label>调色</label>
-        <div class="field-2col">
-          <div class="field">
-            <label class="mini">亮度 <span class="val" id="vImgBright">100%</span></label>
-            <input type="range" id="imgBright" min="40" max="180" value="100" />
+      <div class="field" data-page-node-id="RcIK2EAP4eok7iF0t95FX9">
+        <label data-page-node-id="IOc5yMx6Lr52zq5q5cEl3F">调色</label>
+        <div class="field-2col" data-page-node-id="m36prPBhEN6lwcUCrZ4oyL">
+          <div class="field" data-page-node-id="0VODlGCMHIcSGMgpqRSwF0">
+            <label class="mini" data-page-node-id="DcYeHC1PaHtdMfwHAuAPRe">亮度 <span class="val" id="vImgBright" data-page-node-id="iQ4X3opXmaHyIH72UP3jLI">100%</span></label>
+            <input type="range" id="imgBright" min="40" max="180" value="100" data-page-node-id="HKdACQ8lDQktDqM0y9uy4P" />
           </div>
-          <div class="field">
-            <label class="mini">对比 <span class="val" id="vImgContrast">100%</span></label>
-            <input type="range" id="imgContrast" min="40" max="200" value="100" />
+          <div class="field" data-page-node-id="LRJZEiXf7fBjkeE1PNzz8s">
+            <label class="mini" data-page-node-id="ySAiojK1zgvx4RJVKPx0zE">对比 <span class="val" id="vImgContrast" data-page-node-id="aSFe5mnuGOpjx7aU2QVlXf">100%</span></label>
+            <input type="range" id="imgContrast" min="40" max="200" value="100" data-page-node-id="xUwPtpXDeUOVXqDyn1CgHP" />
           </div>
         </div>
-        <div class="field-2col">
-          <div class="field">
-            <label class="mini">饱和 <span class="val" id="vImgSat">100%</span></label>
-            <input type="range" id="imgSat" min="0" max="250" value="100" />
+        <div class="field-2col" data-page-node-id="19yQ24T04fMaBaZHDSLhIr">
+          <div class="field" data-page-node-id="HQ0fHnLP4bNMYKadieHbGf">
+            <label class="mini" data-page-node-id="dh134mCtKkedmvo5fEyBm6">饱和 <span class="val" id="vImgSat" data-page-node-id="x8TodrJGK98UaJIGhIT3IF">100%</span></label>
+            <input type="range" id="imgSat" min="0" max="250" value="100" data-page-node-id="UEqOh9UnhwJMCh8Tn9sxco" />
           </div>
-          <div class="field">
-            <label class="mini">单色化 <span class="val" id="vImgMono">0%</span></label>
-            <input type="range" id="imgMono" min="0" max="100" value="0" />
+          <div class="field" data-page-node-id="NstwqphEaLTM46hhmKE0xS">
+            <label class="mini" data-page-node-id="SuWyYqSdH8cw5zUAdk4S9a">单色化 <span class="val" id="vImgMono" data-page-node-id="L8KmMntCJHC10vEug6wFAb">0%</span></label>
+            <input type="range" id="imgMono" min="0" max="100" value="0" data-page-node-id="tPLKkZznnha2Hz2ZTbTCgF" />
           </div>
         </div>
-        <p class="tip">单色化配合浅色底可做出镭雕/丝印的单色效果</p>
+        <p class="tip" data-page-node-id="LpqZFtgIStt7EaXAPmAUEY">单色化配合浅色底可做出镭雕/丝印的单色效果</p>
       </div>
-      <button class="btn btn-soft full" id="btnReplaceImg" type="button">替换这张图片</button>
+      <button class="btn btn-soft full" id="btnReplaceImg" type="button" data-page-node-id="EYDYWU4W9wMBW2Gt0sifYL">替换这张图片</button>
     </section>
 
     <!-- 通用位置 -->
-    <section class="block hidden" id="posBlock">
-      <h3 class="block-title">位置与尺寸</h3>
-      <div class="field-2col">
-        <div class="field">
-          <label class="mini">X <span class="val" id="vPosX">0</span></label>
-          <input type="range" id="posX" min="-100" max="100" value="0" />
+    <section class="block hidden" id="posBlock" data-page-node-id="kHjZMqyaEnB2dZESn2ek3Q">
+      <h3 class="block-title" data-page-node-id="U6foDeZCxUEfDaOlaIT5v7">位置与尺寸</h3>
+      <div class="field-2col" data-page-node-id="TVi3Lf0C8dTFv0km6bIo3I">
+        <div class="field" data-page-node-id="zNm6nIEIjsCVRTRP6EuGyS">
+          <label class="mini" data-page-node-id="y1pLIikfODPniDhqHVAKCz">X <span class="val" id="vPosX" data-page-node-id="p6pTLLp5MUEAaK7ta4xKmN">0</span></label>
+          <input type="range" id="posX" min="-100" max="100" value="0" data-page-node-id="DHvKIXWgjFLFGwh0ntI8eC" />
         </div>
-        <div class="field">
-          <label class="mini">Y <span class="val" id="vPosY">0</span></label>
-          <input type="range" id="posY" min="-100" max="100" value="0" />
+        <div class="field" data-page-node-id="6vdVAGFrggwi1ro3yK1RJR">
+          <label class="mini" data-page-node-id="sQktbuRtdedvSPlBCb5AUz">Y <span class="val" id="vPosY" data-page-node-id="fby9xg2RcFKtFZserhKuM6">0</span></label>
+          <input type="range" id="posY" min="-100" max="100" value="0" data-page-node-id="qUKJGq5GYORFG1QGHK6EqQ" />
         </div>
       </div>
-      <div class="row-btns">
-        <button class="btn btn-soft" id="btnCenterH" type="button">水平居中</button>
-        <button class="btn btn-soft" id="btnCenterV" type="button">垂直居中</button>
+      <div class="row-btns" data-page-node-id="95VHWHV0N1QQuRBa3WhW4p">
+        <button class="btn btn-soft" id="btnCenterH" type="button" data-page-node-id="fSVp38AGq4iGEggDAgNRoR">水平居中</button>
+        <button class="btn btn-soft" id="btnCenterV" type="button" data-page-node-id="fYxVLLomNthEWAx7UYxmWO">垂直居中</button>
       </div>
-      <div class="row-btns">
-        <button class="btn btn-soft" id="btnUp" type="button">上移一层</button>
-        <button class="btn btn-soft" id="btnDown" type="button">下移一层</button>
-      </div>
-      <button class="btn btn-danger full" id="btnDel" type="button">删除所选元素</button>
+      <div class="row-btns" data-page-node-id="r2w7qfAT0XMOHX7fIxCXt0">
+        <button class="btn btn-soft" id="btnUp" type="button" data-page-node-id="ISguRDBHpDhs2I0pBsgm47">上移一层</button>
+        <button class="btn btn-soft" id="btnDown" type="button" data-page-node-id="AlGTeWpVAYgYj9lbHjmqof">下移一层</button>
+      </div>      <button class="btn btn-danger full" id="btnDel" type="button" data-page-node-id="I2fhfdgSYDFAHoPDbw2NE0">删除所选元素</button>
     </section>
 
     <!-- 导出 -->
-    <section class="block">
-      <h3 class="block-title">3 · 导出</h3>
-      <div class="field">
-        <label>导出尺寸</label>
-        <select id="expSize">
-          <option value="1200">1200 × 1200（58mm @ 300DPI，推荐）</option>
-          <option value="2400">2400 × 2400（58mm @ 600DPI，高清）</option>
-          <option value="3600">3600 × 3600（超大，细节保留）</option>
+    <section class="block" data-page-node-id="PbijK8BPV5T5hsQRqVN6Tb">
+      <h3 class="block-title" data-page-node-id="JuYrWAU5zi9HzZaCIxL9sm">3 · 导出</h3>
+      <div class="field" data-page-node-id="WvYmiLSQ38JYkR1zR31xIB">
+        <label data-page-node-id="f5GQ09tmXJ5y7p3zmjk91B">导出尺寸</label>
+        <select id="expSize" data-page-node-id="h4G5Z0C8vabFIXuSLemVNU">
+          <option value="1200" data-page-node-id="yHBz7avFHQ3zmxEfssK579">1200 × 1200（58mm @ 300DPI，推荐）</option>
+          <option value="2400" data-page-node-id="DUdJK93zek5gam56BqNQLk">2400 × 2400（58mm @ 600DPI，高清）</option>
+          <option value="3600" data-page-node-id="JX68CSL1shmJoPtM9FI5dn">3600 × 3600（超大，细节保留）</option>
         </select>
       </div>
-      <div class="field">
-        <label>背景</label>
-        <div class="chip-row" id="expBg">
-          <button class="chip is-on" data-bg="disc" type="button">含盘面底色</button>
-          <button class="chip" data-bg="white" type="button">白底</button>
-          <button class="chip" data-bg="transparent" type="button">透明底</button>
+      <div class="field" data-page-node-id="VxDHYFiBeEBj814KGTy2XW">
+        <label data-page-node-id="8hMbT62qbsmLClNaSI9hpc">背景</label>
+        <div class="chip-row" id="expBg" data-page-node-id="sLs7zGHgJ8O6Ap7jlLuKJm">
+          <button class="chip is-on" data-bg="disc" type="button" data-page-node-id="0wSZAvajdEDY9onklKBYc5">含盘面底色</button>
+          <button class="chip" data-bg="white" type="button" data-page-node-id="f6fVeBybrQaDCDf6btDtEY">白底</button>
+          <button class="chip" data-bg="transparent" type="button" data-page-node-id="3eotOFBz6MxIFVM7haYiAH">透明底</button>
         </div>
       </div>
-      <button class="btn btn-primary full" id="btnExport2" type="button">导出高清图片（PNG）</button>
-      <p class="tip">导出为方形画布，圆形盘面居中且已裁切；印刷时按盘面直径对应实际尺寸即可。</p>
+      <button class="btn btn-primary full" id="btnExport2" type="button" data-page-node-id="QQzNGNk61SZ0zwCQxEkEP4">导出高清图片（PNG）</button>
+      <p class="tip" data-page-node-id="lI6g4MSfDYkx2CaLlVxSJF">导出为方形画布，圆形盘面居中且已裁切；印刷时按盘面直径对应实际尺寸即可。</p>
+    </section>
+
+    <!-- 打印参数铭牌 -->
+    <section class="block plate" data-page-node-id="PbijK8BPV5T5hsQRqVN6Tb">
+      <h3 class="block-title" data-page-node-id="JuYrWAU5zi9HzZaCIxL9sm">打印参数</h3>
+      <dl class="plate-rows">
+        <div><dt>MODEL</dt><dd>TAPE-DISC-58</dd></div>
+        <div><dt>DIA</dt><dd>φ58.00 mm</dd></div>
+        <div><dt>SAFE</dt><dd>φ55.00 mm</dd></div>
+        <div><dt>DPI</dt><dd>300 / 600 / 900</dd></div>
+        <div><dt>COLOR</dt><dd>MONO / SPOT</dd></div>
+        <div><dt>MATERIAL</dt><dd>ABS · PC · PVC</dd></div>
+      </dl>
+      <div class="plate-code" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      <p class="plate-sn">SN-2026-0918-0001</p>
     </section>
   </aside>
 </main>
 
 <!-- ============ 提示条 ============ -->
-<div class="toast" id="toast"></div>
+<div class="toast" id="toast" data-page-node-id="Fu12uoDFJrb4M1CHeIZyO7"></div>
 
 <!-- ============ 帮助弹层 ============ -->
-<div class="modal" id="helpModal" hidden>
-  <div class="modal-card">
-    <button class="modal-x" id="helpClose" type="button">✕</button>
-    <h2>怎么用</h2>
-    <ol class="help-list">
-      <li><b>选模板</b>：左栏「示例模板」里有 6 套现成版面，点一下就是全部可编辑的元素，直接改字最快。</li>
-      <li><b>加内容</b>：左边「快速加文字」添加姓名/电话/日期/祝福语；「上传本地照片」加头像或门店图。</li>
-      <li><b>调样式</b>：在画布上点中某个元素，右侧出现对应属性；文字可换字体、颜色、字号、字间距，还能开「浮雕」做出雕刻感，拉「弧形排布」可沿盘边环绕。</li>
-      <li><b>摆位置</b>：直接拖动画布上的元素；双击文字就地修改；滚轮或双指缩放所选；方向键微调。</li>
-      <li><b>看效果</b>：预览右侧「外壳效果」开关可看到装进卷尺的样子，导出时不含外壳。</li>
-      <li><b>导出</b>：右下选尺寸点导出，得到 PNG，交给印刷即可。</li>
+<div class="modal" id="helpModal" hidden data-page-node-id="BGOEtCj6SFC5EmNSfONPis">
+  <div class="modal-card" data-page-node-id="LqB8A3DnFb93fpEru8zCXK">
+    <button class="modal-x" id="helpClose" type="button" data-page-node-id="CuwwllaR8MaDqSSaiRXHTW">✕</button>
+    <h2 data-page-node-id="KItPeJKCSOxL6BXsCQhgKL">操作须知 / OPERATING NOTES</h2>
+    <ol class="help-list" data-page-node-id="kfnDxeW7sDFTeSoEGgkAvR">
+      <li data-page-node-id="32jSCmVbyluinG52dCn98c"><b data-page-node-id="KfhIsuvF3mXyFM3PuZClHU">选模板</b>：左栏「示例模板」里有 6 套现成版面，点一下就是全部可编辑的元素，直接改字最快。</li>
+      <li data-page-node-id="vLSMRvvEaMsvuYCvqUSMxQ"><b data-page-node-id="p0nDBEHQG6B6ggDBqsxgCh">加内容</b>：左边「快速加文字」添加姓名/电话/日期/祝福语；「上传本地照片」加头像或门店图。</li>
+      <li data-page-node-id="orLUrdab3WYoykbmurUrD9"><b data-page-node-id="NfP9EpKKhHQd1V77MeCR4z">调样式</b>：在画布上点中某个元素，右侧出现对应属性；文字可换字体、颜色、字号、字间距，还能开「浮雕」做出雕刻感，拉「弧形排布」可沿盘边环绕。</li>
+      <li data-page-node-id="TNXucZ746oDV5GFnmtKE0q"><b data-page-node-id="jjXzm93nMmPMrLILLhpdA7">摆位置</b>：直接拖动画布上的元素；双击文字就地修改；滚轮或双指缩放所选；方向键微调。</li>
+      <li data-page-node-id="MgICsWlzrZVH6mz3rkmutk"><b data-page-node-id="5bp4N2bkOLKKIIfGdvc56Q">看效果</b>：预览右侧「外壳效果」开关可看到装进卷尺的样子，导出时不含外壳。</li>
+      <li data-page-node-id="QdzPY9PAecKluDBP0uCiXi"><b data-page-node-id="nwY5AhPpwljUPpq34yulZL">导出</b>：右下选尺寸点导出，得到 PNG，交给印刷即可。</li>
     </ol>
-    <div class="help-note">
-      <b>印刷提醒</b>：盘面直径按 58mm 计。文字与图案请留在圆形安全区内（可打开「辅助线」查看），靠边内容在裁切时可能被切掉。
+    <div class="help-note" data-page-node-id="D9C4vI11C0rB7FigHEd2jo">
+      <b data-page-node-id="mH7SgG7ukdAC6JbEqRxjcO">印刷提醒</b>：盘面直径按 58mm 计。文字与图案请留在圆形安全区内（可打开「辅助线」查看），靠边内容在裁切时可能被切掉。
     </div>
   </div>
 </div>
